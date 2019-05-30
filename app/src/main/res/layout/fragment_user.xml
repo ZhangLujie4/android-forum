@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/user_bg"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:src="@drawable/add_pic"
+                app:civ_border_width="2dp"
+                app:civ_border_color="@color/colorPrimary"/>
+
+            <!--<TextView-->
+                <!--android:id="@+id/edit_user"-->
+                <!--android:layout_width="100dp"-->
+                <!--android:layout_height="30dp"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:background="@drawable/button_bg"-->
+                <!--android:text="@string/edit_user"-->
+                <!--android:gravity="center"-->
+                <!--android:textColor="@android:color/white"/>-->
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:text="@string/show_name"
+                android:textSize="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:textColor="@color/colorPrimary"
+                android:id="@+id/show_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:text="@string/show_sex"
+                android:textSize="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:textColor="@color/colorPrimary"
+                android:id="@+id/show_sex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:text="@string/show_age"
+                android:textSize="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:textColor="@color/colorPrimary"
+                android:id="@+id/show_age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:padding="10dp">-->
+
+            <!--<TextView-->
+                <!--android:text="@string/show_desc"-->
+                <!--android:textSize="20dp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+            <!--<EditText-->
+                <!--android:textColor="@color/colorPrimary"-->
+                <!--android:id="@+id/show_desc"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content" />-->
+        <!--</LinearLayout>-->
+
+        <Button
+            android:id="@+id/update_data"
+            android:visibility="gone"
+            android:text="@string/update_data"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button_bg"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <!--<TextView-->
+            <!--android:id="@+id/tv_courier"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="15dp"-->
+            <!--android:text="@string/post_find"-->
+            <!--android:textSize="20dp"/>-->
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_marginRight="10dp"-->
+            <!--android:alpha="0.5"-->
+            <!--android:background="@color/colorPrimary"/>-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/tv_phone"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="15dp"-->
+            <!--android:text="@string/place_find"-->
+            <!--android:textSize="20dp"/>-->
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_marginRight="10dp"-->
+            <!--android:alpha="0.5"-->
+            <!--android:background="@color/colorPrimary"/>-->
+
+        <Button
+            android:id="@+id/btn_logout"
+            android:text="@string/logout"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button_bg"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</ScrollView>

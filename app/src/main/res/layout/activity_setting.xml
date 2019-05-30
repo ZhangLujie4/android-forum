@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--<LinearLayout-->
+        <!--android:paddingLeft="15dp"-->
+        <!--android:id="@+id/ll_speak"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:background="@android:color/white"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="60dp"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<LinearLayout-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content">-->
+            <!--<TextView-->
+                <!--android:text="@string/tts"-->
+                <!--android:textColor="@color/colorPrimary"-->
+                <!--android:textSize="18sp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+
+            <!--<TextView-->
+                <!--android:layout_marginTop="3dp"-->
+                <!--android:text="@string/tts_speak"-->
+                <!--android:textSize="14sp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+        <!--</LinearLayout>-->
+
+        <!--<Switch-->
+            <!--android:id="@+id/sw_speak"-->
+            <!--android:paddingRight="15dp"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content" />-->
+
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_marginTop="4dp"-->
+        <!--android:paddingLeft="15dp"-->
+        <!--android:id="@+id/ll_message"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:background="@android:color/white"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="60dp"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<LinearLayout-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content">-->
+            <!--<TextView-->
+                <!--android:text="@string/message"-->
+                <!--android:textColor="@color/colorPrimary"-->
+                <!--android:textSize="18sp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+
+            <!--<TextView-->
+                <!--android:layout_marginTop="3dp"-->
+                <!--android:text="@string/message_desc"-->
+                <!--android:textSize="14sp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+        <!--</LinearLayout>-->
+
+        <!--<Switch-->
+            <!--android:id="@+id/sw_message"-->
+            <!--android:paddingRight="15dp"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content" />-->
+
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_marginTop="4dp"-->
+        <!--android:paddingLeft="15dp"-->
+        <!--android:id="@+id/ll_update"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:background="@android:color/white"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="60dp"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<LinearLayout-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content">-->
+            <!--<TextView-->
+                <!--android:id="@+id/tv_version"-->
+                <!--android:text="@string/update"-->
+                <!--android:textColor="@color/colorPrimary"-->
+                <!--android:textSize="18sp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+
+            <!--<TextView-->
+                <!--android:layout_marginTop="3dp"-->
+                <!--android:text="@string/update_desc"-->
+                <!--android:textSize="14sp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+        <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
+
+    <!--&lt;!&ndash;扫一扫&ndash;&gt;-->
+    <!--<LinearLayout-->
+        <!--android:layout_marginTop="4dp"-->
+        <!--android:paddingLeft="15dp"-->
+        <!--android:id="@+id/ll_scan"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:background="@android:color/white"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="60dp"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<LinearLayout-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content">-->
+            <!--<TextView-->
+                <!--android:id="@+id/tv_scan"-->
+                <!--android:text="@string/scan"-->
+                <!--android:textColor="@color/colorPrimary"-->
+                <!--android:textSize="18sp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/tv_scan_result"-->
+                <!--android:layout_marginTop="3dp"-->
+                <!--android:text="@string/scan_desc"-->
+                <!--android:textSize="14sp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+        <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
+
+    <!--&lt;!&ndash;我的二维码&ndash;&gt;-->
+    <!--<LinearLayout-->
+        <!--android:layout_marginTop="4dp"-->
+        <!--android:paddingLeft="15dp"-->
+        <!--android:id="@+id/ll_qr_code"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:background="@android:color/white"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="60dp"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<LinearLayout-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content">-->
+            <!--<TextView-->
+                <!--android:id="@+id/tv_share"-->
+                <!--android:text="@string/share"-->
+                <!--android:textColor="@color/colorPrimary"-->
+                <!--android:textSize="18sp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+
+            <!--<TextView-->
+                <!--android:layout_marginTop="3dp"-->
+                <!--android:text="@string/share_desc"-->
+                <!--android:textSize="14sp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+        <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
+
+    <!--&lt;!&ndash;我的位置&ndash;&gt;-->
+    <!--<LinearLayout-->
+        <!--android:layout_marginTop="4dp"-->
+        <!--android:paddingLeft="15dp"-->
+        <!--android:id="@+id/ll_my_location"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:background="@android:color/white"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="60dp"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<LinearLayout-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content">-->
+            <!--<TextView-->
+                <!--android:text="@string/place"-->
+                <!--android:textColor="@color/colorPrimary"-->
+                <!--android:textSize="18sp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+
+            <!--<TextView-->
+                <!--android:layout_marginTop="3dp"-->
+                <!--android:text="@string/place_desc"-->
+                <!--android:textSize="14sp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+        <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
+
+    <!--关于软件-->
+    <LinearLayout
+        android:layout_marginTop="4dp"
+        android:paddingLeft="15dp"
+        android:gravity="center_vertical"
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_about"
+            android:layout_gravity="top"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:layout_height="60dp">
+            <TextView
+                android:text="@string/about"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginTop="3dp"
+                android:text="@string/about_desc"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

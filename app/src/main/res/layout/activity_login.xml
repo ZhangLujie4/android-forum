@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+    
+    <ImageView
+        android:src="@mipmap/ic_launcher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    
+    <EditText
+        android:id="@+id/et_name"
+        android:hint="@string/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/et_password"
+        android:hint="@string/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:password="true"/>
+
+    <LinearLayout
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <CheckBox
+            android:id="@+id/keep_password"
+            android:textColor="@color/colorAccent"
+            android:text="@string/save_pass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_marginTop="10dp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_bg"
+        android:text="@string/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_marginTop="10dp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_bg"
+        android:text="@string/register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

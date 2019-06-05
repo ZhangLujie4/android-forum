@@ -28,6 +28,7 @@ import com.zlj.createforum.ui.LoginActivity;
 import com.zlj.createforum.ui.PhoneActivity;
 import com.zlj.createforum.utils.L;
 import com.zlj.createforum.utils.ShareUtils;
+import com.zlj.createforum.utils.StaticClass;
 import com.zlj.createforum.utils.UtilTools;
 import com.zlj.createforum.view.CustomDialog;
 
@@ -87,9 +88,6 @@ public class UserFragment extends Fragment implements View.OnClickListener {
         profile_image = (CircleImageView) view.findViewById(R.id.profile_image);
         profile_image.setOnClickListener(this);
 
-        //加载头像
-        UtilTools.getImageToShare(getActivity(), profile_image);
-
         //默认是不可点击,不可输入的
         setEnable(false);
 
@@ -99,7 +97,14 @@ public class UserFragment extends Fragment implements View.OnClickListener {
         show_name.setText(sp.getString("username", ""));
         show_sex.setText(sp.getString("tags", ""));
         show_age.setText(sp.getString("nickname", ""));
+        String avatar = sp.getString("avatar", "");
 //        show_desc.setText(sp.getString("desc", "这人很懒，什么也没有留下"));
+
+        //加载头像
+        if (avatar.length() <= 0) {
+            avatar = StaticClass.default_avatar;
+        }
+        UtilTools.getImageFromUrl(avatar, profile_image);
 
         //初始化dialog
         dialog = new CustomDialog(getActivity(), WindowManager.LayoutParams.WRAP_CONTENT,

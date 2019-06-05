@@ -135,6 +135,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                         ShareUtils.putString(LoginActivity.this, "avatar", content.getString("avatar"));
                                         ShareUtils.putString(LoginActivity.this, "username", content.getString("username"));
                                         ShareUtils.putString(LoginActivity.this, "tags", content.getString("tags"));
+                                        ShareUtils.putString(LoginActivity.this, "avatar", content.getString("avatar"));
                                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                         finish();
                                     } else {

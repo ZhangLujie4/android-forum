@@ -7,12 +7,23 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Base64;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * 项目名:   ZLJapp
@@ -56,6 +67,35 @@ public class UtilTools {
             Bitmap bitmap = BitmapFactory.decodeStream(byStream);
             profile_image.setImageBitmap(bitmap);
         }
+    }
+
+    public static void getImageFromUrl(String url, final ImageView profile_image) {
+        OkHttpClient okHttpClient = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url(url).build();
+        final Handler handler = new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                byte[] bitmap = (byte[]) msg.obj;
+                Bitmap bm = BitmapFactory.decodeByteArray(bitmap, 0, bitmap.length);
+                profile_image.setImageBitmap(bm);
+            }
+        };
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                byte[] bitmap = response.body().bytes();
+                Message message = handler.obtainMessage();
+                message.obj = bitmap;
+                handler.sendMessage(message);
+            }
+        });
     }
 
     //获取版本号

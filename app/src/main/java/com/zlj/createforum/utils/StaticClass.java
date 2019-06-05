@@ -17,6 +17,9 @@ public class StaticClass {
     // 文章详情
     public static final String REQUEST_DETAIL = "http://www.anhaozhang.com/outer/";
 
+    // 默认头像
+    public static final String default_avatar = "https://create-forum.oss-cn-beijing.aliyuncs.com/user_avatar.jpg";
+
     //闪屏延时
     public static final int HANDLER_SPLASH = 1001;
 

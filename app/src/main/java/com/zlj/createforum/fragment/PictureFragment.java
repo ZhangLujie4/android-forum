@@ -29,6 +29,7 @@ import com.zlj.createforum.adapter.GridAdapter;
 import com.zlj.createforum.adapter.WeChatAdapter;
 import com.zlj.createforum.entity.PictureData;
 import com.zlj.createforum.entity.WeChatData;
+import com.zlj.createforum.ui.ArticleActivity;
 import com.zlj.createforum.ui.WebViewActivity;
 import com.zlj.createforum.utils.L;
 import com.zlj.createforum.utils.ShareUtils;
@@ -121,7 +122,7 @@ public class PictureFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 L.i("position:"+i);
-                Intent intent = new Intent(getActivity(), WebViewActivity.class);
+                Intent intent = new Intent(getActivity(), ArticleActivity.class);
 //                Bundle bundle = new Bundle();
 //                bundle.putString("key", "values");
 //                intent.putExtras(bundle);
@@ -140,7 +141,7 @@ public class PictureFragment extends Fragment {
             for (int i = 0; i < list.size(); i++) {
                 com.alibaba.fastjson.JSONObject item = (JSONObject) list.get(i);
                 WeChatData data = new WeChatData();
-                data.setImgUrl(StaticClass.REQUEST_DETAIL + item.getString("id"));
+                data.setImgUrl(item.getString("id"));
                 data.setNewsUrl(item.getString("likeNum") + "喜欢");
                 data.setSource(item.getString("comment"));
                 data.setTitle(item.getString("title"));

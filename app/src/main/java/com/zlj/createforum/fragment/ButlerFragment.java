@@ -27,6 +27,7 @@ import com.zlj.createforum.adapter.ChatListAdapter;
 import com.zlj.createforum.adapter.WeChatAdapter;
 import com.zlj.createforum.entity.ChatData;
 import com.zlj.createforum.entity.WeChatData;
+import com.zlj.createforum.ui.ArticleActivity;
 import com.zlj.createforum.ui.WebViewActivity;
 import com.zlj.createforum.utils.L;
 import com.zlj.createforum.utils.ShareUtils;
@@ -54,6 +55,9 @@ public class ButlerFragment extends Fragment implements View.OnClickListener {
     private ListView mListView;
     private List<WeChatData> mList = new ArrayList<>();
     private Handler handler = null;
+    private Button button;
+    private EditText editText;
+    private String token;
 
     @Nullable
     @Override
@@ -73,10 +77,38 @@ public class ButlerFragment extends Fragment implements View.OnClickListener {
     //初始化
     private void findView(View view) {
         mListView = (ListView) view.findViewById(R.id.mListView);
+        button = (Button) view.findViewById(R.id.button2);
+        editText = (EditText) view.findViewById(R.id.editText);
+        button.setOnClickListener(this);
+        token = ShareUtils.getString(this.getActivity(), "token", "");
 
-        SharedPreferences sp = this.getActivity().getSharedPreferences(ShareUtils.NAME, Context.MODE_PRIVATE);
-        final String token = sp.getString("token", "");
+        defaultList();
+//        String url = "http://v.juhe.cn/weixin/query?key=" + StaticClass.WECHAT_KEY + "&ps=50";
+//        RxVolley.get(url, new HttpCallback() {
+//            @Override
+//            public void onSuccess(String t) {
+//                L.i("wechat:"+t);
+//                parsingJson(t);
+//            }
+//        });
 
+        //点击事件
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                L.i("position:"+i);
+                Intent intent = new Intent(getActivity(), ArticleActivity.class);
+//                Bundle bundle = new Bundle();
+//                bundle.putString("key", "values");
+//                intent.putExtras(bundle);
+                intent.putExtra("title", mList.get(i).getTitle());
+                intent.putExtra("url", mList.get(i).getImgUrl());
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void defaultList() {
         //解析接口
         new Thread(new Runnable() {
             @Override
@@ -101,39 +133,78 @@ public class ButlerFragment extends Fragment implements View.OnClickListener {
 
             }
         }).start();
-//        String url = "http://v.juhe.cn/weixin/query?key=" + StaticClass.WECHAT_KEY + "&ps=50";
-//        RxVolley.get(url, new HttpCallback() {
-//            @Override
-//            public void onSuccess(String t) {
-//                L.i("wechat:"+t);
-//                parsingJson(t);
-//            }
-//        });
+    }
 
-        //点击事件
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    private void searchList(final String keyword) {
+        //解析接口
+        new Thread(new Runnable() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                L.i("position:"+i);
-                Intent intent = new Intent(getActivity(), WebViewActivity.class);
-//                Bundle bundle = new Bundle();
-//                bundle.putString("key", "values");
-//                intent.putExtras(bundle);
-                intent.putExtra("title", mList.get(i).getTitle());
-                intent.putExtra("url", mList.get(i).getImgUrl());
-                startActivity(intent);
+            public void run() {
+                String url = StaticClass.REQUEST_PREFIX + "/api/common/search/list?keyword=" + keyword + "&page=1&size=100";
+
+                OkHttpClient client = new OkHttpClient();
+                Request request = new Request.Builder()
+                        .url(url)
+                        .build();
+                try {
+                    Response response = client.newCall(request).execute();
+                    if (response.isSuccessful()) {
+                        String str = response.body().string();
+                        L.i(str);
+                        parsingSearch(str);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
             }
-        });
+        }).start();
+    }
+
+    private void parsingSearch(String t) {
+        mList = new ArrayList<>();
+        try {
+            com.alibaba.fastjson.JSONObject json = JSON.parseObject(t);
+            com.alibaba.fastjson.JSONObject contentJson = json.getJSONObject("content");
+            JSONArray list = contentJson.getJSONArray("data");
+
+            for (int i = 0; i < list.size(); i++) {
+                com.alibaba.fastjson.JSONObject item = (JSONObject) list.get(i);
+                WeChatData data = new WeChatData();
+                data.setImgUrl(item.getString("id"));
+                String content = item.getString("content").replaceAll("<.*?>", "");
+                content = content.replaceAll(".*?>", "");
+                content = content.replaceAll("<.*", "");
+                content = content.replaceAll("「", "<font color='#e85bea'>");
+                content = content.replaceAll("」", "</font>");
+                data.setNewsUrl(content.length() > 200 ? content.substring(0, 200) + "..." : content);
+                data.setSource(item.getString("author"));
+                String title = item.getString("title").replaceAll("<.*?>", "");
+                title = title.replaceAll(".*?>", "");
+                title = title.replaceAll("<.*", "");
+                title = title.replaceAll("「", "<font color='#e85bea'>");
+                title = title.replaceAll("」", "</font>");
+                data.setTitle(title);
+                mList.add(data);
+            }
+            L.i(mList.toString());
+            Message message = Message.obtain();
+            message.obj = mList;
+            handler.sendMessage(message);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     private void parsingJson(String t) {
+        mList = new ArrayList<>();
         try {
             com.alibaba.fastjson.JSONObject json = JSON.parseObject(t);
             JSONArray list = json.getJSONArray("content");
             for (int i = 0; i < list.size(); i++) {
                 com.alibaba.fastjson.JSONObject item = (JSONObject) list.get(i);
                 WeChatData data = new WeChatData();
-                data.setImgUrl(StaticClass.REQUEST_DETAIL + item.getString("aid"));
+                data.setImgUrl(item.getString("aid"));
                 data.setNewsUrl(item.getString("content").substring(0, 200) + "...");
                 data.setSource(item.getString("id"));
                 data.setTitle(item.getString("title"));
@@ -150,7 +221,16 @@ public class ButlerFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()) {
+            case R.id.button2:
+                String keyword = editText.getText().toString();
+                if (keyword == null || keyword.length() <= 0) {
+                    defaultList();
+                } else {
+                    searchList(keyword);
+                }
+                break;
+        }
     }
 //        try {
 //            JSONObject object = new JSONObject(t);

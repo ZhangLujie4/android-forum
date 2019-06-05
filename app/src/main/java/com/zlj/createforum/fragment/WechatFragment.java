@@ -25,6 +25,7 @@ import com.zlj.createforum.MainActivity;
 import com.zlj.createforum.R;
 import com.zlj.createforum.adapter.WeChatAdapter;
 import com.zlj.createforum.entity.WeChatData;
+import com.zlj.createforum.ui.ArticleActivity;
 import com.zlj.createforum.ui.LoginActivity;
 import com.zlj.createforum.ui.WebViewActivity;
 import com.zlj.createforum.utils.L;
@@ -119,7 +120,7 @@ public class WechatFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 L.i("position:"+i);
-                Intent intent = new Intent(getActivity(), WebViewActivity.class);
+                Intent intent = new Intent(getActivity(), ArticleActivity.class);
 //                Bundle bundle = new Bundle();
 //                bundle.putString("key", "values");
 //                intent.putExtras(bundle);
@@ -137,7 +138,7 @@ public class WechatFragment extends Fragment {
             for (int i = 0; i < list.size(); i++) {
                 JSONObject item = (JSONObject) list.get(i);
                 WeChatData data = new WeChatData();
-                data.setImgUrl(StaticClass.REQUEST_DETAIL + item.getString("aid"));
+                data.setImgUrl(item.getString("aid"));
                 data.setNewsUrl(item.getString("content").substring(0, 200) + "...");
                 data.setSource(item.getString("id"));
                 data.setTitle(item.getString("title"));

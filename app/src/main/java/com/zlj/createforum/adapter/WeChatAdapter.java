@@ -1,6 +1,7 @@
 package com.zlj.createforum.adapter;
 
 import android.content.Context;
+import android.text.Html;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -73,8 +74,8 @@ public class WeChatAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) view.getTag();
         }
         data = weChatDataList.get(i);
-        viewHolder.tv_source.setText(data.getNewsUrl());
-        viewHolder.tv_title.setText(data.getTitle());
+        viewHolder.tv_source.setText(Html.fromHtml(data.getNewsUrl()));
+        viewHolder.tv_title.setText(Html.fromHtml(data.getTitle()));
 //        if (!TextUtils.isEmpty(data.getImgUrl())) {
 //            PicassoUtils.loadImageViewDefaultSize(context, data.getImgUrl(), R.drawable.pig,
 //                    width/3, 200, viewHolder.iv_img);

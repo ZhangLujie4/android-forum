@@ -205,7 +205,8 @@ public class ButlerFragment extends Fragment implements View.OnClickListener {
                 com.alibaba.fastjson.JSONObject item = (JSONObject) list.get(i);
                 WeChatData data = new WeChatData();
                 data.setImgUrl(item.getString("aid"));
-                data.setNewsUrl(item.getString("content").substring(0, 200) + "...");
+                String content = item.getString("content");
+                data.setNewsUrl(content.length() > 200 ? content.substring(0, 200) + "..." : content);
                 data.setSource(item.getString("id"));
                 data.setTitle(item.getString("title"));
                 mList.add(data);
